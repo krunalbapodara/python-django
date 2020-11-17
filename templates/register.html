@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% load static %}
+{% static 'images' as baseUrl %}
+
+{% block register %}
+
+<div class="destinations" id="destinations">
+    <div class="background_image" style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_subtitle">Register</div>
+                <div class="section_title">
+                    <h2>
+                        <div class="logo"><a href="/">Test Proj</a></div>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row destinations_row">
+            <div class="col text-center">
+                <form class="form" action="register" method="post">
+                    {% csrf_token %}
+                    <input class="form-control" type="text" placeholder="Enter first name" name="first_name"><br />
+                    <input class="form-control" type="text" placeholder="Enter last name" name="last_name"><br />
+                    <input class="form-control" type="text" placeholder="Enter username" name="username"><br />
+                    <input class="form-control" type="email" placeholder="Enter email" name="email"><br />
+                    <input class="form-control" type="password" placeholder="Enter password" name="password1"><br />
+                    <input class="form-control" type="password" placeholder="Confirm password" name="password2"><br />
+                    <input class="form-control btn btn-primary" type="submit">
+                </form>
+                <a href="login">Login</a>
+                <div>
+                    {% for message in messages %}
+                    <h3>{{message}}</h3>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

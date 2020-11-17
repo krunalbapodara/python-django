@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% load static %}
+{% static 'images' as baseUrl %}
+
+{% block jsfile %}
+    <script src="{% static 'js/demo.js' %}"></script>
+{% endblock %}
+
+{% block login %}
+
+<div class="destinations" id="destinations">
+    <div class="background_image" style="background-image:url({% static 'images/home_slider.jpg' %})"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="section_subtitle">Sign in</div>
+                <div class="section_title">
+                    <h2>
+                        <div class="logo"><a href="/">Test Proj</a></div>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row destinations_row">
+            <div class="col text-center">
+                <form action="login" method="post">
+                    {% csrf_token %}
+                    <input class="form-control" type="text" placeholder="Enter username" name="username"><br /><br/>
+                    <input class="form-control" type="password" placeholder="Enter password" name="password"><br /><br/>
+                    <input class="form-control btn btn-primary" type="submit">
+                </form>
+                <a class="btn color-white" href="register">Register</a>
+                <div>
+                    {% for message in messages %}
+                    <h3>{{message}}</h3>
+                    {% endfor %}
+                </div>
+                <button class="btn btn-primary" id="clcbtn" onclick="callapi()">Call api</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
